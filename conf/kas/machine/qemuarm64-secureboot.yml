@@ -1,0 +1,14 @@
+header:
+  version: 11
+  includes:
+    - ../base.yml
+
+repos:
+  meta-arm:
+    url: https://git.yoctoproject.org/meta-arm
+    refspec: kirkstone-g96aad3b29aa7a5ee4df5cf617a6336e5218fa9bd
+    layers:
+      meta-arm:
+      meta-arm-toolchain:
+
+machine: qemuarm64-secureboot

@@ -1,0 +1,66 @@
+header:
+  version: 11
+
+build_system: oe
+
+repos:
+
+  bitbake:
+    url: https://git.openembedded.org/bitbake
+    refspec: 2.0-g0c6f86b60cfba67c20733516957c0a654eb2b44c
+    layers:
+      .: excluded
+
+  meta-avocado:
+    path: meta-avocado
+
+  meta-openembedded:
+    url: https://git.openembedded.org/meta-openembedded
+    refspec: kirkstone-g571e36e20e9d1f27af0eb4545291beeb64f280e2
+    layers:
+      meta-oe:
+      meta-python:
+      meta-networking:
+      meta-filesystems:
+
+  openembedded-core:
+    url: https://git.openembedded.org/openembedded-core
+    refspec: kirkstone-gb67e714b367a08fdeeeff68c2d9495ec9bc07304
+    layers:
+      meta:
+
+  meta-virtualization:
+    url: git://git.yoctoproject.org/meta-virtualization
+    refspec: 9d056f957b42e31f1c2c5bad0af1ab6c84b53ee6
+    layers:
+      .:
+
+  meta-erlang:
+    url: git@github.com:meta-erlang/meta-erlang
+    refspec: 1df1b0401d6d29bab4329d16a07fb53d92a8c0e2
+    layers:
+      .: 
+
+  meta-peridio:
+    url: git@github.com:peridio/meta-peridio
+    refspec: b98a3fcfe1aa2f1efe5106ad0947df2d43da398e
+    layers:
+      .:  
+
+distro: avocado
+
+env:
+    TEMPLATECONF: ../meta-avocado/conf/templates/default
+
+local_conf_header:
+  meta-avocado: |
+    USER_CLASSES:append = " buildhistory buildstats buildstats-summary"
+    EXTRA_IMAGE_FEATURES ?= "debug-tweaks"
+    INHERIT:append = " rm_work"
+    RM_OLD_IMAGE = "1"
+
+  sdk: |
+    CONF_VERSION = "2"
+
+target:
+ - avocado-image-base
