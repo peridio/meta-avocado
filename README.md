@@ -36,3 +36,38 @@ To build for a machine
 ```bash
   kas build meta-avocado/conf/kas/machine/qemuarm64-secureboot.yml
 ```
+
+## Runtime
+
+Testing of the runtime can be done using the `qemuarm64-secureboot` machine.
+Build this configuration, then execute the following to produce the runtime
+artifacts:
+
+Convert the fwup archive into an image
+
+```bash
+fwup -a \
+-t complete \
+-i build/tmp/deploy/images/qemuarm64-secureboot/qemuarm64-secureboot.fw \
+-d build/tmp/deploy/images/qemuarm64-secureboot/qemuarm64-secureboot.img
+```
+
+Boot the qemu machine:
+
+```bash
+qemu-system-aarch64 \
+  -M virt,secure=on \
+  -bios build/tmp/deploy/images/qemuarm64-secureboot/flash.bin \
+  -cpu cortex-a53 \
+  -device virtio-blk-device,drive=hd0 \
+  -device virtio-net-device,netdev=eth0 \
+  -device virtio-rng-device,rng=rng0 \
+  -drive file=build/tmp/deploy/images/qemuarm64-secureboot/qemuarm64-secureboot.img,if=none,format=raw,id=hd0 \
+  -m 1024 \
+  -netdev user,id=eth0,hostfwd=tcp::10022-:22 \
+  -no-acpi \
+  -nographic \
+  -object rng-random,filename=/dev/urandom,id=rng0 \
+  -rtc base=utc,clock=host \
+  -smp 2
+```
