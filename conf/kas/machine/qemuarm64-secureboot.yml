@@ -11,4 +11,11 @@ repos:
       meta-arm:
       meta-arm-toolchain:
 
+local_conf_header:
+  qemuall: |
+    UBOOT_EXTLINUX = "1"
+    UBOOT_EXTLINUX_INITRD = "../avocado-initramfs"
+    UBOOT_EXTLINUX_ROOT = "root=/dev/vda2"
+    UBOOT_EXTLINUX_CONSOLE = ""
+
 machine: qemuarm64-secureboot

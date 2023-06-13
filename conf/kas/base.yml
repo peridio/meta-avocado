@@ -39,13 +39,13 @@ repos:
     url: git@github.com:meta-erlang/meta-erlang
     refspec: 1df1b0401d6d29bab4329d16a07fb53d92a8c0e2
     layers:
-      .: 
+      .:
 
   meta-peridio:
     url: git@github.com:peridio/meta-peridio
-    refspec: b98a3fcfe1aa2f1efe5106ad0947df2d43da398e
+    refspec: 8562ebcbbc90157efd4e86a7025649fd0f5bf72d
     layers:
-      .:  
+      .:
 
 distro: avocado
 

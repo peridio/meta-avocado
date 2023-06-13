@@ -10,7 +10,7 @@ PACKAGE_INSTALL = " \
 # Do not pollute the initrd image with rootfs features
 IMAGE_FEATURES = ""
 
-export IMAGE_BASENAME = "${MLPREFIX}avocado-initramfs"
+export IMAGE_BASENAME = "${MLPREFIX}avocado-image-initramfs"
 IMAGE_NAME_SUFFIX ?= ""
 IMAGE_LINGUAS = ""
 
