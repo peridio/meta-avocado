@@ -1,0 +1,54 @@
+#
+# Peridio variables
+#
+
+peridio_revert=\
+    if test ${peridio_active} = "a"; then\
+        echo "Reverting to partition B";\
+        setenv peridio_active "b";\
+    else\
+        echo "Reverting to partition A";\
+        setenv peridio_active "a";\
+    fi
+
+peridio_init=\
+    if test ${peridio_booted} = 1; then\
+        if test ${peridio_validated} = 0; then\
+            run peridio_revert;\
+            setenv peridio_validated 1;\
+            saveenv;\
+        fi;\
+    else\
+        setenv peridio_booted 1;\
+        if test ${peridio_autovalidate} = 1; then\
+            setenv peridio_validated 1;\
+        fi;\
+        saveenv;\
+    fi;\
+    if test ${peridio_active} = "a"; then\
+        setenv uenv_root /dev/mmcblk0p1;\
+        setenv rootpart 0:2;\
+    else\
+        setenv uenv_root /dev/mmcblk0p2;\
+        setenv rootpart 0:3;\
+    fi
+
+console=ttyAMA0
+devtype=mmc
+fdt_addr=0x40000000
+loadaddr=0x40400000
+ramdisk_addr_r=0x44000000
+
+bootpart=0:1
+bootfile=/boot/Image
+initrdfile=avocado-initramfs
+
+mmcargs=setenv bootargs console=${console} root=${uenv_root} rootwait
+loadimage=load ${devtype} ${rootpart} ${loadaddr} ${bootfile}
+loadinitramfs=load ${devtype} ${bootpart} ${ramdisk_addr_r} ${initrdfile}
+
+mmcboot=echo Booting from mmc...;\
+    run mmcargs;\
+    booti ${loadaddr} ${ramdisk_addr_r}:${filesize} ${fdt_addr};
+
+bootcmd=run peridio_init loadimage loadinitramfs mmcboot

@@ -2,7 +2,7 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 SRC_URI:append:class-target = " \
   file://fw_env.config \
 "
-FILES:${PN} += "/etc/fw_env.config"
+FILES:${PN} += "${sysconfdir}/fw_env.config"
 
 inherit deploy
 

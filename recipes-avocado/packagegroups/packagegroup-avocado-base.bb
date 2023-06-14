@@ -5,11 +5,12 @@ LICENSE = "MIT"
 inherit packagegroup
 
 RDEPENDS:${PN} = " \
-  fwup \
-  f2fs-tools \
   e2fsprogs-mke2fs \
+  f2fs-tools \
+  fwup \
   haveged \
-  procps \
+  kernel \
   libubootenv-bin \
   peridiod \
+  procps \
 "

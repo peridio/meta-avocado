@@ -48,21 +48,27 @@ Convert the fwup archive into an image
 ```bash
 fwup -a \
 -t complete \
--i build/tmp/deploy/images/qemuarm64-secureboot/qemuarm64-secureboot.fw \
--d build/tmp/deploy/images/qemuarm64-secureboot/qemuarm64-secureboot.img
+-i build/tmp/deploy/images/qemuarm64-secureboot/avocado-image-base-qemuarm64-secureboot.fw \
+-d build/tmp/deploy/images/qemuarm64-secureboot/avocado-image-base-qemuarm64-secureboot.img
+```
+
+Resize the image:
+
+```bash
+qemu-img resize --shrink -f raw build/tmp/deploy/images/qemuarm64-secureboot/avocado-image-base-qemuarm64-secureboot.img 512M
 ```
 
 Boot the qemu machine:
 
 ```bash
-qemu-system-aarch64 \
-  -M virt,secure=on \
+qemu-system-aarch64 \                                                                                                         -M virt,secure=on \
   -bios build/tmp/deploy/images/qemuarm64-secureboot/flash.bin \
   -cpu cortex-a53 \
-  -device virtio-blk-device,drive=hd0 \
+  -device sdhci-pci \
+  -device sd-card,drive=mmc \
   -device virtio-net-device,netdev=eth0 \
   -device virtio-rng-device,rng=rng0 \
-  -drive file=build/tmp/deploy/images/qemuarm64-secureboot/qemuarm64-secureboot.img,if=none,format=raw,id=hd0 \
+  -drive file=build/tmp/deploy/images/qemuarm64-secureboot/avocado-image-base-qemuarm64-secureboot.img,if=none,format=raw,id=mmc \
   -m 1024 \
   -netdev user,id=eth0,hostfwd=tcp::10022-:22 \
   -no-acpi \

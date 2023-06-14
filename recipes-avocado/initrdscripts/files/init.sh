@@ -8,16 +8,6 @@ mount -t sysfs none /sys
 
 mkdir -p /run/lock
 
-find_boot_part() {
-	if findfs "LABEL=BOOT-A" > /dev/null; then
-		PERIDIO_BOOT="a"
-		echo "A"
-	elif findfs "LABEL=BOOT-B" > /dev/null; then
-		PERIDIO_BOOT="b"
-		echo "B"
-	fi
-}
-
 find_mount_devpath() {
 	grep $1 /proc/mounts -m 1 | cut -d ' ' -f 1
 }
@@ -27,27 +17,15 @@ shell() {
     exec sh
 }
 
-# Wait for blkdev to mount the rootfs
-ATTEMPTS=0
-MAX_WAIT=10
-find_boot_part
-while [[ $ATTEMPTS -lt $MAX_WAIT ]] && [[ -v $PERIDIO_BOOT ]]; do
-	echo "Waiting for blkdev"
-	sleep 1
-	find_boot_part
-	let ATTEMPTS=ATTEMPTS+1
-done
-
 # Read the variables from the UBoot env
+PERIDIO_BOOT=$(fw_printenv -n peridio_active)
 PERIDIO_INITRAMFS_SHELL=$(fw_printenv -n peridio_initramfs_shell)
 PERIDIO_DISK_DEVPATH=$(fw_printenv -n peridio_disk_devpath)
-PERIDIO_ROOTFS_DEVPATH=$(fw_printenv -n ${PERIDIO_BOOT}.peridio_rootfs_part0_devpath)
-PERIDIO_ROOTFS_TYPE=$(fw_printenv -n ${PERIDIO_BOOT}.peridio_rootfs_part0_type)
-PERIDIO_PLATFORMFS_DEVPATH=$(fw_printenv -n ${PERIDIO_BOOT}.peridio_platformfs_part0_devpath)
-PERIDIO_PLATFORMFS_TYPE=$(fw_printenv -n ${PERIDIO_BOOT}.peridio_platformfs_part0_type)
-PERIDIO_DATAFS_DEVPATH=$(fw_printenv -n ${PERIDIO_BOOT}.peridio_datafs_part0_devpath)
-PERIDIO_DATAFS_TYPE=$(fw_printenv -n ${PERIDIO_BOOT}.peridio_datafs_part0_type)
-PERIDIO_DATAFS_TARGET=$(fw_printenv -n ${PERIDIO_BOOT}.peridio_datafs_part0_target)
+PERIDIO_ROOTFS_DEVPATH=$(fw_printenv -n ${PERIDIO_BOOT}.peridio_rootfs_part_devpath)
+PERIDIO_ROOTFS_TYPE=$(fw_printenv -n ${PERIDIO_BOOT}.peridio_rootfs_part_type)
+PERIDIO_DATAFS_DEVPATH=$(fw_printenv -n ${PERIDIO_BOOT}.peridio_datafs_part_devpath)
+PERIDIO_DATAFS_TYPE=$(fw_printenv -n ${PERIDIO_BOOT}.peridio_datafs_part_type)
+PERIDIO_DATAFS_TARGET=$(fw_printenv -n ${PERIDIO_BOOT}.peridio_datafs_part_target)
 
 # Create the directories for mountpoints
 for dir in root rootfs platformfs overlay; do
@@ -62,21 +40,19 @@ done
 
 # Mount the overlayfs
 mount -t $PERIDIO_ROOTFS_TYPE -o ro $PERIDIO_ROOTFS_DEVPATH /mnt/rootfs
-mount -t $PERIDIO_PLATFORMFS_TYPE $PERIDIO_PLATFORMFS_DEVPATH /mnt/platformfs
-mount -t overlay -o rw,lowerdir=/mnt/platformfs:/mnt/rootfs,upperdir=/mnt/overlay/upper,workdir=/mnt/overlay/work overlay /mnt/root
+# mount -t $PERIDIO_PLATFORMFS_TYPE $PERIDIO_PLATFORMFS_DEVPATH /mnt/platformfs
+# mount -t overlay -o rw,lowerdir=/mnt/platformfs:/mnt/rootfs,upperdir=/mnt/overlay/upper,workdir=/mnt/overlay/work overlay /mnt/root
+mount -t overlay -o rw,lowerdir=/mnt/rootfs,upperdir=/mnt/overlay/upper,workdir=/mnt/overlay/work overlay /mnt/root
 
 # Calculate the devpaths incase PARTUUID or LABEL is being used as devpath
 PERIDIO_ROOTFS_DEVPATH=$(find_mount_devpath /mnt/rootfs)
-PERIDIO_PLATFORMFS_DEVPATH=$(find_mount_devpath /mnt/platformfs)
-if [[ $PERIDIO_DISK_DEVPATH == UUID* ]]; then
-  PERIDIO_DISK_DEVPATH="${PERIDIO_ROOTFS_DEVPATH%%+([[:digit:]])}"
-fi
+# if [[ $PERIDIO_DISK_DEVPATH == UUID* ]]; then
+#   PERIDIO_DISK_DEVPATH="${PERIDIO_ROOTFS_DEVPATH%%+([[:digit:]])}"
+# fi
 # Save the environment for the new rootfs
 echo """
 PERIDIO_BOOT=${PERIDIO_BOOT}
 PERIDIO_DISK_DEVPATH=${PERIDIO_DISK_DEVPATH}
-PERIDIO_PLATFORMFS_DEVPATH=${PERIDIO_PLATFORMFS_DEVPATH}
-PERIDIO_PLATFORMFS_TYPE=${PERIDIO_PLATFORMFS_TYPE}
 PERIDIO_ROOTFS_DEVPATH=${PERIDIO_ROOTFS_DEVPATH}
 PERIDIO_ROOTFS_TYPE=${PERIDIO_ROOTFS_TYPE}
 PERIDIO_DATAFS_DEVPATH=${PERIDIO_DATAFS_DEVPATH}
@@ -91,7 +67,7 @@ echo "source /etc/environment" >> /mnt/root/etc/profile
 # systemd will initialize the partition if it fails to mount
 echo "${PERIDIO_DATAFS_DEVPATH} ${PERIDIO_DATAFS_TARGET} ${PERIDIO_DATAFS_TYPE} nodev,x-systemd.makefs 0 2" >> /mnt/root/etc/fstab
 
-if [[ $PERIDIO_INITRAMFS_SHELL == "true" ]]; then
+if [[ $PERIDIO_INITRAMFS_SHELL == "1" ]]; then
 	shell
 else
 	umount /proc
