@@ -26,25 +26,25 @@ peridio_init=\
         saveenv;\
     fi;\
     if test ${peridio_active} = "a"; then\
-        setenv uenv_root /dev/mmcblk0p1;\
+        setenv uenv_root /dev/mmcblk0p2;\
         setenv rootpart 0:2;\
     else\
-        setenv uenv_root /dev/mmcblk0p2;\
+        setenv uenv_root /dev/mmcblk0p3;\
         setenv rootpart 0:3;\
     fi
 
 console=ttyAMA0
 devtype=mmc
+bootpart=0:1
 fdt_addr=0x40000000
 loadaddr=0x40400000
 ramdisk_addr_r=0x44000000
 
-bootpart=0:1
-bootfile=/boot/Image
+bootfile=Image
 initrdfile=avocado-initramfs
 
 mmcargs=setenv bootargs console=${console} root=${uenv_root} rootwait
-loadimage=load ${devtype} ${rootpart} ${loadaddr} ${bootfile}
+loadimage=load ${devtype} ${bootpart} ${loadaddr} ${bootfile}
 loadinitramfs=load ${devtype} ${bootpart} ${ramdisk_addr_r} ${initrdfile}
 
 mmcboot=echo Booting from mmc...;\

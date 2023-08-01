@@ -17,6 +17,8 @@ local_conf_header:
     PERIDIO_BOOTFS_SIZE_MB = "32"
     PERIDIO_ROOTFS_SIZE_MB = "64"
     PERIDIO_DATAFS_SIZE_MB = "64"
+    PERIDIO_DATAFS_PART_TYPE = "ext4"
+
     # uncomment for testing delta
     # PERIDIO_ROOTFS_SIZE_MB = "256"
     # EXTRA_IMAGECMD:squashfs = "-noI -noD -noF -noX"

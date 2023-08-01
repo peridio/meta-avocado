@@ -1,7 +1,7 @@
-SRC_URI += "file://uboot-env.txt"
+SRC_URI += "file://${MACHINE}.txt"
 
 ENV_FILENAME = "uboot.env"
-ENV_FILEPATH = "${WORKDIR}/uboot-env.txt"
+ENV_FILEPATH = "${WORKDIR}/${MACHINE}.txt"
 
 do_compile:append() {
     bbnote "Compile U-Boot environment"

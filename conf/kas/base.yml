@@ -56,7 +56,6 @@ local_conf_header:
   meta-avocado: |
     USER_CLASSES:append = " buildhistory buildstats buildstats-summary"
     EXTRA_IMAGE_FEATURES ?= "debug-tweaks"
-    INHERIT:append = " rm_work"
     RM_OLD_IMAGE = "1"
 
   sdk: |

@@ -61,7 +61,8 @@ qemu-img resize --shrink -f raw build/tmp/deploy/images/qemuarm64-secureboot/avo
 Boot the qemu machine:
 
 ```bash
-qemu-system-aarch64 \                                                                                                         -M virt,secure=on \
+qemu-system-aarch64 \
+  -M virt,secure=on,highmem=off \
   -bios build/tmp/deploy/images/qemuarm64-secureboot/flash.bin \
   -cpu cortex-a53 \
   -device sdhci-pci \

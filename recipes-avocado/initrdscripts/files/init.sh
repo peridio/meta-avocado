@@ -25,7 +25,7 @@ PERIDIO_ROOTFS_DEVPATH=$(fw_printenv -n ${PERIDIO_BOOT}.peridio_rootfs_part_devp
 PERIDIO_ROOTFS_TYPE=$(fw_printenv -n ${PERIDIO_BOOT}.peridio_rootfs_part_type)
 PERIDIO_DATAFS_DEVPATH=$(fw_printenv -n ${PERIDIO_BOOT}.peridio_datafs_part_devpath)
 PERIDIO_DATAFS_TYPE=$(fw_printenv -n ${PERIDIO_BOOT}.peridio_datafs_part_type)
-PERIDIO_DATAFS_TARGET=$(fw_printenv -n ${PERIDIO_BOOT}.peridio_datafs_part_target)
+PERIDIO_DATAFS_TARGET=$(fw_printenv -n ${PERIDIO_BOOT}.peridio_datafs_part_mountpoint)
 
 # Create the directories for mountpoints
 for dir in root rootfs platformfs overlay; do

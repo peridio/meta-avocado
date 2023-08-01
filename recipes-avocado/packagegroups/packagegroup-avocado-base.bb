@@ -13,4 +13,6 @@ RDEPENDS:${PN} = " \
   libubootenv-bin \
   peridiod \
   procps \
+  socat \
+  picocom \
 "
