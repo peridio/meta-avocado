@@ -13,5 +13,5 @@ RDEPENDS:${PN} = " \
   libubootenv-bin \
   peridiod \
   peridiod-remote-console \
-  procps
+  procps \
 "
