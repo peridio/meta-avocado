@@ -1,0 +1,16 @@
+header:
+  version: 11
+
+repos:
+
+  meta-erlang:
+    url: git@github.com:meta-erlang/meta-erlang
+    refspec: 1df1b0401d6d29bab4329d16a07fb53d92a8c0e2
+    layers:
+      .:
+
+  meta-peridio:
+    url: git@github.com:peridio/meta-peridio
+    refspec: b284338c686f3876dd681e0ada56a6e60b76a6ab
+    layers:
+      .:

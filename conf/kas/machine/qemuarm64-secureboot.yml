@@ -23,4 +23,4 @@ local_conf_header:
     # PERIDIO_ROOTFS_SIZE_MB = "256"
     # EXTRA_IMAGECMD:squashfs = "-noI -noD -noF -noX"
 
-machine: qemuarm64-secureboot
+machine: avo-qemuarm64-secureboot

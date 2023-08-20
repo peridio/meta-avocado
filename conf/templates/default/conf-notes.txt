@@ -3,4 +3,4 @@
 You can now run 'bitbake <target>'
 Targets for building Avocado images:
     core-image-minimal     - minimally bootable image (no apps, no graphics)
-    avocado-image-base     - Avocado basic image with no graphics
+    avocado-image-base     - Avocado rootfs

@@ -6,23 +6,17 @@ MACHINE_FEATURES += ""
 
 inherit packagegroup
 
-VIRTUAL-RUNTIME_dev_manager = "busybox-mdev"
-VIRTUAL-RUNTIME_initscripts = ""
-VIRTUAL-RUNTIME_init_manager = "avocado-init"
-VIRTUAL-RUNTIME_login_manager = ""
-VIRTUAL-RUNTIME_syslog = ""
-VIRTUAL-RUNTIME_keymaps = ""
-VIRTUAL-RUNTIME_update-alternatives = ""
-
 RDEPENDS:${PN} = "\
-    base-files \
-    busybox \
-    ${VIRTUAL-RUNTIME_dev_manager} \
-    ${VIRTUAL-RUNTIME_init_manager} \
-    ${VIRTUAL-RUNTIME_initscripts} \
-    ${VIRTUAL-RUNTIME_login_manager} \
-    ${VIRTUAL-RUNTIME_syslog} \
-    u-boot-fw-utils \
-    util-linux-findfs \
-    libubootenv-bin \
-    "
+  base-files \
+  base-passwd \
+  busybox \
+  u-boot-fw-utils \
+  util-linux-findfs \
+  libubootenv-bin \
+  initramfs-framework-base \
+  initramfs-module-avocado \
+  initramfs-module-udev \
+  lvm2-udevrules \
+  udev \
+  util-linux-mount \
+"

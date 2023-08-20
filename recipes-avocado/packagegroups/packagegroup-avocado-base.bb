@@ -12,7 +12,8 @@ RDEPENDS:${PN} = " \
   kernel \
   libubootenv-bin \
   peridiod \
+  peridiod-remote-console \
   procps \
   socat \
-  picocom \
+  tio \
 "
