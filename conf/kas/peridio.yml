@@ -14,6 +14,6 @@ repos:
 
   meta-peridio:
     url: git@github.com:peridio/meta-peridio
-    refspec: b284338c686f3876dd681e0ada56a6e60b76a6ab
+    refspec: ece071481b234b50102a29d8fec212f3089faebe
     layers:
       .:
