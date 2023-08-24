@@ -1,0 +1,15 @@
+#!/bin/sh
+
+avooverlaymkfs_enabled() {
+    return 0
+}
+
+avooverlaymkfs_run() {
+    mkdir -p $PERIDIO_DATAFS_TARGET
+    if mount -n -t "$PERIDIO_DATAFS_TYPE" -o ${PERIDIO_DATAFS_OPTIONS:-defaults} $PERIDIO_DATAFS_DEVPATH "$PERIDIO_DATAFS_TARGET"; then
+	    umount $PERIDIO_DATAFS_TARGET
+	    rm -rf $PERIDIO_DATAFS_TARGET 
+    else
+	    eval mkfs.${PERIDIO_DATAFS_TYPE} ${PERIDIO_DATAFS_DEVPATH}
+    fi
+}

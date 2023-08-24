@@ -1,0 +1,9 @@
+header:
+  version: 11
+  includes:
+    - repo: meta-avocado-nvidia
+      file: conf/kas/bsp/nvidia.yml
+
+repos:
+  meta-avocado-nvidia:
+    path: meta-avocado/meta-avocado-nvidia

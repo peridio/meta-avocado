@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# Copyright (C) 2023 Peridio.
+# Licensed on MIT
+
+avofinish_enabled() {
+  return 0
+}
+
+avofinish_run() {
+  # if [[ $PERIDIO_DISK_DEVPATH == UUID* ]]; then
+  #   PERIDIO_DISK_DEVPATH="${PERIDIO_ROOTFS_DEVPATH%%+([[:digit:]])}"
+  # fi
+  # Save the environment for the new rootfs
+  echo """
+  PERIDIO_BOOT=${PERIDIO_BOOT}
+  PERIDIO_DISK_DEVPATH=${PERIDIO_DISK_DEVPATH}
+  PERIDIO_ROOTFS_DEVPATH=${PERIDIO_ROOTFS_DEVPATH}
+  PERIDIO_ROOTFS_TYPE=${PERIDIO_ROOTFS_TYPE}
+  PERIDIO_DATAFS_DEVPATH=${PERIDIO_DATAFS_DEVPATH}
+  PERIDIO_DATAFS_TYPE=${PERIDIO_DATAFS_TYPE}
+  PERIDIO_DATAFS_TARGET=${PERIDIO_DATAFS_TARGET}
+  """ >> $ROOT_DIR/etc/environment
+
+  # Source the environment when logging in
+  echo "source /etc/environment" >> $ROOT_DIR/etc/profile
+
+  # Add an entry to fstab for the data partition
+  # systemd will initialize the partition if it fails to mount
+  echo "${PERIDIO_DATAFS_DEVPATH} ${PERIDIO_DATAFS_TARGET} ${PERIDIO_DATAFS_TYPE} nodev,x-systemd.makefs 0 2" >> $ROOT_DIR/etc/fstab
+
+}

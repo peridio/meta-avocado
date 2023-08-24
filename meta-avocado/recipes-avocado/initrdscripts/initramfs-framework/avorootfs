@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Copyright (C) 2023 Peridio.
+# Licensed on MIT
+
+avorootfs_enabled() {
+  return 0
+}
+
+avorootfs_run() {
+  bootparam_root="$PERIDIO_ROOTFS_DEVPATH"
+}

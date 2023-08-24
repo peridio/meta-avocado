@@ -29,12 +29,12 @@ This repository has been officially tested for the following machines:
 * Qemu Arm64 Secureboot
 
 Machine configuration files may bring in other layers and are found at:
-`meta-avocado/conf/kas/machine`
+`kas/machine`
 
 To build for a machine
 
 ```bash
-  kas build meta-avocado/conf/kas/machine/qemuarm64-secureboot.yml
+  kas build meta-avocado/kas/machine/qemuarm64-secureboot.yml
 ```
 
 ## Runtime

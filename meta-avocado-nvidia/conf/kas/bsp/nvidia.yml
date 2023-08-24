@@ -1,0 +1,31 @@
+header:
+  version: 11
+
+repos:
+  meta-tegra:
+    url: git@github.com:oe4t/meta-tegra
+    refspec: dd0d91ad1ac0f0654aed6cce143ed8fc26719196
+    layers:
+      .:
+  meta-tegra-community:
+    url: git@github.com:oe4t/meta-tegra-community
+    refspec: 56ce73e5f5a36cea832894946787bd024b71493e
+    layers:
+      .:
+  meta-tensorflow:
+    url: https://git.yoctoproject.org/meta-tensorflow
+    refspec: ec20e19319f9eb89ceadc04923cc5bc75e865692
+    layers:
+      .:
+
+local_conf_header:
+  tegra: |
+    INITRAMFS_IMAGE_BUNDLE = "1"
+    FWUP_EXTRA_VARS = "TEGRAFLASH_HOST_PATH INITRAMFS_IMAGE"
+    TEGRAFLASH_INITRD_FLASH_IMAGE = ""
+    TEGRAFLASH_HOST_PATH = "${COMPONENTS_DIR}/${MACHINE_ARCH}/tegra-bootfiles/usr/share/tegraflash"
+    IMAGE_INSTALL += "packagegroup-avocado-tegra"
+    DISTRO_FEATURES_DEFAULT += "opengl seccomp"
+    CUDA_GCCVERSION = "8.%"
+    LICENSE_FLAGS_ACCEPTED += "commercial_faad2"
+    PARALLEL_MAKE = "-j 48"

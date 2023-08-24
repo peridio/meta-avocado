@@ -1,0 +1,19 @@
+header:
+  version: 11
+  includes:
+    - kas/base.yml
+    - kas/bsp/arm.yml
+
+local_conf_header:
+  qemuall: |
+    UBOOT_ENV_SIZE = "0x20000"
+    PERIDIO_BOOTFS_SIZE_MB = "32"
+    PERIDIO_ROOTFS_SIZE_MB = "64"
+    PERIDIO_DATAFS_SIZE_MB = "64"
+    PERIDIO_DATAFS_PART_TYPE = "ext4"
+
+    # uncomment for testing delta
+    # PERIDIO_ROOTFS_SIZE_MB = "256"
+    # EXTRA_IMAGECMD:squashfs = "-noI -noD -noF -noX"
+
+machine: avo-qemuarm64-secureboot
