@@ -1,6 +1,9 @@
 header:
   version: 11
-
+  includes:
+    - repo: meta-peridio
+      file: conf/kas/peridio-include.yml
+      
 repos:
 
   meta-erlang:
