@@ -16,4 +16,7 @@ local_conf_header:
     # PERIDIO_ROOTFS_SIZE_MB = "256"
     # EXTRA_IMAGECMD:squashfs = "-noI -noD -noF -noX"
 
-machine: avo-qemuarm64-secureboot
+    IMAGE_FSTYPES = "fwup-img"
+    FWUP_FILE = "qemu.fwup.conf"
+
+machine: qemuarm64-secureboot

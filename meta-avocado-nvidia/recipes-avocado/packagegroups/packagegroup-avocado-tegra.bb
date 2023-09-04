@@ -14,7 +14,5 @@ RDEPENDS:${PN} = " \
   nvidia-docker \
   cuda-libraries \
   tegra-tools-tegrastats \
-  tensorflow \
-  keras \
 "
 

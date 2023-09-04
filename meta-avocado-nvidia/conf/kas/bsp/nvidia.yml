@@ -12,11 +12,6 @@ repos:
     refspec: 56ce73e5f5a36cea832894946787bd024b71493e
     layers:
       .:
-  meta-tensorflow:
-    url: https://git.yoctoproject.org/meta-tensorflow
-    refspec: ec20e19319f9eb89ceadc04923cc5bc75e865692
-    layers:
-      .:
 
 local_conf_header:
   tegra: |
