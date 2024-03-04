@@ -1,0 +1,13 @@
+header:
+  version: 11
+  includes:
+    - repo: meta-avocado-nxp
+      file: conf/kas/bsp/nxp.yml
+
+repos:
+  meta-avocado-nxp:
+    path: meta-avocado/meta-avocado-nxp
+
+local_conf_header:
+  meta-avocado-example-nxp: |
+    ACCEPT_FSL_EULA = "1"
