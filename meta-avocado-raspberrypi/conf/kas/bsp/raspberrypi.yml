@@ -1,0 +1,14 @@
+header:
+  version: 11
+
+repos:
+  meta-raspberrypi:
+    url: https://git.yoctoproject.org/meta-raspberrypi
+    commit: 9dc6673d41044f1174551120ce63501421dbcd85
+    branch: kirkstone
+    layers:
+      .:
+
+local_conf_header:
+  raspberrypi: |
+    do_image_fwup[depends] += "rpi-bootfiles:do_deploy"

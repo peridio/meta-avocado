@@ -1,0 +1,17 @@
+
+header:
+  version: 11
+  includes:
+    - meta-avocado-example/conf/kas/base.yml
+    - meta-avocado-example/conf/kas/bsp/raspberrypi.yml
+
+local_conf_header:
+  raspberrypi4-64: |
+    PERIDIO_BOOTFS_SIZE_MB = "128"
+    ROOTFS_A_PART_OFFSET = "77324"
+    IMAGE_FSTYPES = "fwup-img"
+    ENABLE_UART = "1"
+    CMDLINE_ROOTFS = "root=/dev/mmcblk0p2 rootwait rootrw=/dev/mmcblk0p4"
+    RPI_EXTRA_CONFIG = "initramfs avocado-initramfs followkernel"
+
+machine: raspberrypi4-64
