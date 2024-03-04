@@ -14,4 +14,3 @@ CORE_IMAGE_BASE_INSTALL += "${@'packagegroup-avocado-systemd' if d.getVar('VIRTU
 CORE_IMAGE_BASE_INSTALL += "${@'packagegroup-avocado-qemu' if d.getVar('MACHINE').startswith('qemu') else ''}"
 
 IMAGE_FSTYPES += "squashfs"
-

@@ -1,0 +1,9 @@
+header:
+  version: 11
+  includes:
+    - repo: meta-avocado-raspberrypi
+      file: conf/kas/bsp/raspberrypi.yml
+
+repos:
+  meta-avocado-raspberrypi:
+    path: meta-avocado/meta-avocado-raspberrypi
