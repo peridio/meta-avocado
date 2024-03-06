@@ -1,0 +1,2 @@
+DEPENDS += "avocado-flash-layout"
+PARTITION_FILE_EXTERNAL = "${STAGING_DATADIR}/avocado-flash-l4t/${PARTITION_LAYOUT_EXTERNAL}"

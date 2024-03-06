@@ -1,0 +1,23 @@
+header:
+  version: 11
+  includes:
+    - meta-avocado-example/conf/kas/base.yml
+    - meta-avocado-example/conf/kas/bsp/arm.yml
+
+local_conf_header:
+  qemuarm64: |
+    CORE_IMAGE_BASE_INSTALL += "optee-test"
+    UBOOT_ENV_SIZE = "0x20000"
+
+    IMAGE_FSTYPES = "fwup-img"
+    FWUP_FILE = "qemu.fwup.conf"
+
+    PERIDIO_BOOTFS_SIZE_MB = "32"
+    PERIDIO_ROOTFS_SIZE_MB = "64"
+    PERIDIO_ROOTFS_A_PART_DEVPATH = "/dev/mmcblk0p4"
+    PERIDIO_ROOTFS_B_PART_DEVPATH = "/dev/mmcblk0p5"
+    PERIDIO_DATAFS_SIZE_MB = "64"
+    PERIDIO_DATAFS_PART_TYPE = "ext4"
+    PERIDIO_DATAFS_PART_DEVPATH = "/dev/mmcblk0p6"
+
+machine: qemuarm64-secureboot

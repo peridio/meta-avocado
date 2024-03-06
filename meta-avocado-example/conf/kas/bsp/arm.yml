@@ -1,0 +1,9 @@
+header:
+  version: 11
+  includes:
+    - repo: meta-avocado-arm
+      file: conf/kas/bsp/arm.yml
+
+repos:
+  meta-avocado-arm:
+    path: meta-avocado/meta-avocado-arm

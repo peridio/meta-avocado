@@ -1,0 +1,17 @@
+header:
+  version: 11
+  includes:
+    - meta-avocado-example/conf/kas/base.yml
+    - meta-avocado-example/conf/kas/bsp/nvidia.yml
+
+local_conf_header:
+  jetson-orin-nano-devkit: |
+    KERNEL_ARGS = "console=ttyTCU0,115200 fbcon=map:0 video=efifb:off debug shell"
+    PERIDIO_UBOOT_ENV_OFFSET = "1024"
+    PERIDIO_DISK_DEVPATH = "/dev/mmcblk0"
+    PERIDIO_ROOTFS_A_PART_DEVPATH = "${PERIDIO_DISK_DEVPATH}p1"
+    PERIDIO_ROOTFS_B_PART_DEVPATH = "${PERIDIO_DISK_DEVPATH}p2"
+    PERIDIO_DATAFS_PART_DEVPATH = "${PERIDIO_DISK_DEVPATH}p24"
+    PERIDIO_DATAFS_PART_TYPE = "ext4"
+
+machine: jetson-orin-nano-devkit

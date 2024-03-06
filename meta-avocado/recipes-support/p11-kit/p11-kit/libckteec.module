@@ -1,0 +1,5 @@
+module: /usr/lib/libckteec.so.0
+critical: no
+trust-policy: yes
+managed: yes
+log-calls: no

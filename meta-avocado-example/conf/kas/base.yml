@@ -1,0 +1,61 @@
+header:
+  version: 11
+  includes:
+    - meta-avocado-example/conf/kas/peridio.yml
+
+build_system: oe
+
+repos:
+  bitbake:
+    url: https://git.openembedded.org/bitbake
+    commit: 41b6684489d0261753344956042be2cc4adb0159
+    branch: '2.0'
+    layers:
+      .: excluded
+
+  meta-avocado:
+    path: meta-avocado/meta-avocado
+
+  meta-avocado-example:
+    path: meta-avocado/meta-avocado-example
+
+  meta-openembedded:
+    url: https://git.openembedded.org/meta-openembedded
+    commit: a88cb922f91fda95e8a584cee3092083d5ad3e98
+    branch: kirkstone
+    layers:
+      meta-oe:
+      meta-perl:
+      meta-python:
+      meta-networking:
+      meta-filesystems:
+
+  openembedded-core:
+    url: https://git.openembedded.org/openembedded-core
+    commit: 6c7fef37d4286f6bfc7b1dcb2d1e543a110a7f6f
+    branch: kirkstone
+    layers:
+      meta:
+
+  meta-virtualization:
+    url: git://git.yoctoproject.org/meta-virtualization
+    commit: 2d8b3cba8ff27c9ec2187a52b6a551fe1dcfaa07
+    branch: kirkstone
+    layers:
+      .:
+
+distro: avocado
+
+env:
+    TEMPLATECONF: ../meta-avocado/conf/templates/default
+
+local_conf_header:
+  meta-avocado: |
+    USER_CLASSES:append = " buildhistory buildstats buildstats-summary"
+    EXTRA_IMAGE_FEATURES ?= "debug-tweaks"
+
+  sdk: |
+    CONF_VERSION = "2"
+
+target:
+ - avocado-image-base

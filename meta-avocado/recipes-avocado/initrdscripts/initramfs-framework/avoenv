@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Copyright (C) 2023 Peridio.
+# Licensed on MIT
+
+avoenv_enabled() {
+  return 0
+}
+
+avoenv_run() {
+  debug "Avocado Env"
+
+  mkdir -p /run/lock
+
+  # Read the variables from the UBoot env
+  PERIDIO_BOOT=$(fw_printenv -n peridio_active)
+  PERIDIO_INITRAMFS_SHELL=$(fw_printenv -n peridio_initramfs_shell)
+  PERIDIO_DISK_DEVPATH=$(fw_printenv -n peridio_disk_devpath)
+  PERIDIO_ROOTFS_DEVPATH=$(fw_printenv -n ${PERIDIO_BOOT}.peridio_rootfs_part_devpath)
+  PERIDIO_ROOTFS_TYPE=$(fw_printenv -n ${PERIDIO_BOOT}.peridio_rootfs_part_type)
+  PERIDIO_DATAFS_DEVPATH=$(fw_printenv -n ${PERIDIO_BOOT}.peridio_datafs_part_devpath)
+  PERIDIO_DATAFS_TYPE=$(fw_printenv -n ${PERIDIO_BOOT}.peridio_datafs_part_type)
+  PERIDIO_DATAFS_TARGET=$(fw_printenv -n ${PERIDIO_BOOT}.peridio_datafs_part_mountpoint)
+}

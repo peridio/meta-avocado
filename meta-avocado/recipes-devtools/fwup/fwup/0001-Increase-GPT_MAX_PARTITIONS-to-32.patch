@@ -1,0 +1,22 @@
+From 9c80075be818d25762545e4e973696f95ad56bf2 Mon Sep 17 00:00:00 2001
+From: Justin Schneck <jschneck@mac.com>
+Date: Mon, 21 Aug 2023 20:20:37 -0400
+Subject: [PATCH] Increase GPT_MAX_PARTITIONS to 32
+
+---
+ src/gpt.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gpt.h b/src/gpt.h
+index 5f279e6..7897a3f 100644
+--- a/src/gpt.h
++++ b/src/gpt.h
+@@ -26,7 +26,7 @@
+ // fwup only supports 16 partitions even though GPT supports more.
+ // There's nothing fundemental limiting this. The partition info
+ // is stored on the stack.
+-#define GPT_MAX_PARTITIONS 16
++#define GPT_MAX_PARTITIONS 32
+ 
+ #define GPT_PARTITION_TABLE_BLOCKS 32
+ #define GPT_SIZE_BLOCKS (1 + GPT_PARTITION_TABLE_BLOCKS)
