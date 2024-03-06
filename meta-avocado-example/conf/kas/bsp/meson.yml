@@ -1,0 +1,9 @@
+header:
+  version: 11
+  includes:
+    - repo: meta-avocado-meson
+      file: conf/kas/bsp/meson.yml
+
+repos:
+  meta-avocado-meson:
+    path: meta-avocado/meta-avocado-meson
