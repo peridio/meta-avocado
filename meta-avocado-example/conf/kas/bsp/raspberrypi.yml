@@ -7,3 +7,7 @@ header:
 repos:
   meta-avocado-raspberrypi:
     path: meta-avocado/meta-avocado-raspberrypi
+
+local_conf_header:
+  meta-avocado-example-raspberrypi: |
+    RPI_EXTRA_CONFIG = "initramfs avocado-initramfs followkernel"
