@@ -15,7 +15,7 @@ repos:
 
   meta-peridio:
     url: git@github.com:peridio/meta-peridio
-    commit: 3c7cb6a536f440218765a51d9b588f853569caeb
+    commit: 5b97f116bdadc406f5bdf235682085d1db06276c
     branch: kirkstone
     layers:
       .:
