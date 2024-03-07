@@ -26,7 +26,14 @@ git clone git@github.com/peridio/meta-avocado
 
 This repository has been officially tested for the following machines:
 
-* Qemu Arm64 Secureboot
+|------------------------|------------------------|
+| Name                   | Config                 |
+|------------------------|------------------------|
+| Qemu Arm64 Secureboot  | qemuarm64-secureboot   |
+| i.MX6 ULL 14x14 EVK    | imx6ull14x14evk        |
+| Raspberry Pi 3 - 64Bit | raspberrypi3-64        |
+| Raspberry Pi 4 - 64Bit | raspberrypi4-64        |
+|------------------------|------------------------|
 
 Machine configuration files may bring in other layers and are found at:
 `meta-avocado-example/conf/kas/machine`
