@@ -1,0 +1,10 @@
+header:
+  version: 11
+
+repos:
+  meta-meson:
+    url: git@github.com:superna9999/meta-meson
+    commit: 4a83d41dda9fcad026253046b677a1c20582391e
+    branch: kirkstone
+    layers:
+      .:

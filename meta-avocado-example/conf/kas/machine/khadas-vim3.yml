@@ -1,0 +1,19 @@
+
+header:
+  version: 11
+  includes:
+    - meta-avocado-example/conf/kas/base.yml
+    - meta-avocado-example/conf/kas/bsp/meson.yml
+
+local_conf_header:
+  khadas-vim3: |
+    UBOOT_ENV_SIZE = "0x20000"
+    PERIDIO_DISK_DEVPATH = "/dev/mmcblk0"
+    PERIDIO_ROOTFS_A_PART_DEVPATH = "/dev/mmcblk0p2"
+    PERIDIO_ROOTFS_B_PART_DEVPATH = "/dev/mmcblk0p2"
+    PERIDIO_UBOOT_ENV_OFFSET = "4352"
+    PERIDIO_UBOOT_ENV_COUNT = "256"
+    PERIDIO_BOOTFS_OFFSET_BLOCKS = "8192"
+    PERIDIO_BOOTFS_SIZE_MB = "128"
+
+machine: khadas-vim3
