@@ -3,13 +3,13 @@ header:
 
 repos:
   meta-tegra:
-    url: git@github.com:oe4t/meta-tegra
+    url: https://github.com/oe4t/meta-tegra
     commit: 644aa6081f0be59e7644eede1833f358c3095872
     branch: kirkstone
     layers:
       .:
   meta-tegra-community:
-    url: git@github.com:oe4t/meta-tegra-community
+    url: htps://github.com/oe4t/meta-tegra-community
     commit: 4d864674754659d16a1865de5a345b3f9197f12b
     branch: kirkstone
     layers:
