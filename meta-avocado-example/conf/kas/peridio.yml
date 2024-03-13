@@ -7,14 +7,14 @@ header:
 repos:
 
   meta-erlang:
-    url: git@github.com:meta-erlang/meta-erlang
+    url: https://github.com/meta-erlang/meta-erlang
     commit: 8959b17e0d28bb685471f024120e7ab6c03d9a6d
     branch: kirkstone
     layers:
       .:
 
   meta-peridio:
-    url: git@github.com:peridio/meta-peridio
+    url: https://github.com/peridio/meta-peridio
     commit: 5b97f116bdadc406f5bdf235682085d1db06276c
     branch: kirkstone
     layers:
