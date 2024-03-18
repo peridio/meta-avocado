@@ -4,3 +4,6 @@ SRC_URI += " \
   file://f2fs.cfg \
   file://overlayfs.cfg \
 "
+SRC_URI:append:raspberrypi5 = " \
+  file://localversion.cfg \
+"

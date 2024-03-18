@@ -1,0 +1,23 @@
+
+header:
+  version: 11
+  includes:
+    - meta-avocado-example/conf/kas/base.yml
+    - meta-avocado-example/conf/kas/bsp/raspberrypi.yml
+
+local_conf_header:
+  raspberrypi5: |
+    PERIDIO_BOOTFS_SIZE_MB = "128"
+    PERIDIO_ROOTFS_A_PART_DEVPATH = "/dev/mmcblk0p2"
+    PERIDIO_ROOTFS_B_PART_DEVPATH = "/dev/mmcblk0p2"
+    ROOTFS_A_PART_OFFSET = "77324"
+    PERIDIO_DATAFS_TYPE = "ext4"
+    IMAGE_FSTYPES = "fwup-img"
+    ENABLE_UART = "1"
+    CMDLINE_ROOTFS = "root=/dev/mmcblk0p2 rootwait rootrw=/dev/mmcblk0p4"
+    RPI_EXTRA_CONFIG = ' \n \
+    initramfs avocado-initramfs followkernel \n \
+    dtparam=uart0_console \n \
+    '
+
+machine: raspberrypi5
