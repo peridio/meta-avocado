@@ -4,8 +4,8 @@ header:
 repos:
   meta-arm:
     url: https://git.yoctoproject.org/meta-arm
-    commit: b187fb9232ca0a6b5f8f90b4715958546fc41d73
-    branch: kirkstone
+    commit: 74ac722826d020341ffffdf255cfcdd302f22410
+    branch: master
     layers:
       meta-arm:
       meta-arm-toolchain:

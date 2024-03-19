@@ -5,14 +5,6 @@ header:
       file: conf/kas/peridio-include.yml
 
 repos:
-
-  meta-erlang:
-    url: https://github.com/meta-erlang/meta-erlang
-    commit: 8959b17e0d28bb685471f024120e7ab6c03d9a6d
-    branch: kirkstone
-    layers:
-      .:
-
   meta-peridio:
     url: https://github.com/peridio/meta-peridio
     commit: 5b97f116bdadc406f5bdf235682085d1db06276c
@@ -23,3 +15,8 @@ repos:
 env:
   PERIDIO_CERTIFICATE_FILE: "../ssl/${MACHINE}-certificate.pem"
   PERIDIO_PRIVATE_KEY_FILE: "../ssl/${MACHINE}-private-key.pem"
+
+local_conf_header:
+  peridio: |
+    PREFERRED_VERSION_erlang ?= "26%"
+    PREFERRED_VERSION_erlang-native ?= "26%"

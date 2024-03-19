@@ -8,16 +8,24 @@ local_conf_header:
   qemuarm64: |
     CORE_IMAGE_BASE_INSTALL += "optee-test"
     UBOOT_ENV_SIZE = "0x20000"
-
     IMAGE_FSTYPES = "fwup-img"
     FWUP_FILE = "qemu.fwup.conf"
-
-    PERIDIO_BOOTFS_SIZE_MB = "32"
+    PACKAGECONFIG:append:pn-qemu-system-native = " slirp"
+    PERIDIO_BOOTFS_SIZE_MB = "64"
     PERIDIO_ROOTFS_SIZE_MB = "64"
     PERIDIO_ROOTFS_A_PART_DEVPATH = "/dev/mmcblk0p4"
     PERIDIO_ROOTFS_B_PART_DEVPATH = "/dev/mmcblk0p5"
     PERIDIO_DATAFS_SIZE_MB = "64"
     PERIDIO_DATAFS_PART_TYPE = "ext4"
     PERIDIO_DATAFS_PART_DEVPATH = "/dev/mmcblk0p6"
+
+    QB_SMP = "2"
+    QB_CPU = "cortex-a53"
+    QB_MEM = "512"
+    QB_NETWORK_DEVICE = "-device virtio-net-device,netdev=eth0"
+    QB_SLIRP_OPT = "-netdev user,id=eth0,hostfwd=tcp::10022-:22"
+    QB_GRAPHICS = "-nographic"
+    QB_MACHINE = "virt,secure=on,highmem=off"
+    QB_OPT_APPEND = "-bios build/tmp/deploy/images/qemuarm64-secureboot/flash.bin"
 
 machine: qemuarm64-secureboot
