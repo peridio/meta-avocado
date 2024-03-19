@@ -3,8 +3,8 @@ header:
 
 repos:
   meta-meson:
-    url: https://github.com/superna9999/meta-meson
-    commit: 4a83d41dda9fcad026253046b677a1c20582391e
-    branch: kirkstone
+    url: https://github.com/peridio/meta-meson
+    commit: 72178654c2faa8f4aa286d8aaf281e919de7b1be
+    branch: scarthgap
     layers:
       .:

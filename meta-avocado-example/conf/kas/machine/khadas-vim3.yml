@@ -7,6 +7,7 @@ header:
 
 local_conf_header:
   khadas-vim3: |
+    CORE_IMAGE_EXTRA_INSTALL += "packagegroup-avocado-ml"
     UBOOT_ENV_SIZE = "0x20000"
     PERIDIO_DISK_DEVPATH = "/dev/mmcblk0"
     PERIDIO_ROOTFS_A_PART_DEVPATH = "/dev/mmcblk0p2"

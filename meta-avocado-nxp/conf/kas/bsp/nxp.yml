@@ -3,38 +3,37 @@ header:
 
 repos:
   meta-imx:
-    url: https://github.com/nxp-imx/meta-imx
+    url: https://github.com/peridio/meta-imx
     commit: ca68ab5d25322b51f54564275c84ab8de3c74ea6
-    branch: kirkstone-5.15.71-2.2.2
+    branch: scarthgap-6.6.3-1.0.0
     layers:
-      meta-bsp:
-      meta-sdk:
-      meta-ml:
-      meta-v2x:
+      meta-imx-bsp:
+      meta-imx-sdk:
+      meta-imx-ml:
+      meta-imx-v2x:
 
   meta-freescale:
     url: https://github.com/Freescale/meta-freescale
-    commit: 710e55d529c86d15a93c4421365ef62eb601a49b
-    branch: kirkstone
+    commit: da46cb6c07ff25a000840b695627a326b0d4085a
+    branch: master
     layers:
       .:
 
   meta-freescale-3rdparty:
     url: https://github.com/Freescale/meta-freescale-3rdparty
-    commit: 9e94b64bdfebcf7bfdf2af6447cec866a4efa814
-    branch: kirkstone
+    commit: ae392bf4c9b9499234cb4a3411624a4177237af2
+    branch: master
     layers:
       .:
 
-  meta-freescale-distro:
-    url: https://github.com/Freescale/meta-freescale-distro
-    commit: d5bbb487b2816dfc74984a78b67f7361ce404253
-    branch: kirkstone
-    layers:
-      .:
+  # meta-freescale-distro:
+  #   url: https://github.com/Freescale/meta-freescale-distro
+  #   commit: 3691cb207b610cf505c3a1f8d5d7757814f79967
+  #   branch: master
+  #   layers:
+  #     .:
 
 local_conf_header:
   meta-avocado-nxp: |
     PREFERRED_PROVIDER_virtual/bootloader:imx-nxp-bsp = "u-boot-imx"
     PREFERRED_PROVIDER_virtual/kernel:imx-nxp-bsp = "linux-imx"
-

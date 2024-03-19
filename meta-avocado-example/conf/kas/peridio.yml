@@ -7,8 +7,8 @@ header:
 repos:
   meta-peridio:
     url: https://github.com/peridio/meta-peridio
-    commit: 5b97f116bdadc406f5bdf235682085d1db06276c
-    branch: kirkstone
+    commit: c77af56899e56b9011676a12d2df22131a57218e
+    branch: main
     layers:
       .:
 

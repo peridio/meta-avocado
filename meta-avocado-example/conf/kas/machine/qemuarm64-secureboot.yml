@@ -6,9 +6,9 @@ header:
 
 local_conf_header:
   qemuarm64: |
-    CORE_IMAGE_BASE_INSTALL += "optee-test"
-    UBOOT_ENV_SIZE = "0x20000"
+    CORE_IMAGE_EXTRA_INSTALL += "optee-test"
     IMAGE_FSTYPES = "fwup-img"
+    UBOOT_ENV_SIZE = "0x20000"
     FWUP_FILE = "qemu.fwup.conf"
     PACKAGECONFIG:append:pn-qemu-system-native = " slirp"
     PERIDIO_BOOTFS_SIZE_MB = "64"

@@ -12,5 +12,6 @@ inherit core-image
 CORE_IMAGE_BASE_INSTALL += "packagegroup-avocado-base packagegroup-avocado-basetests packagegroup-avocado-tls"
 CORE_IMAGE_BASE_INSTALL += "${@'packagegroup-avocado-systemd' if d.getVar('VIRTUAL-RUNTIME_init_manager') == 'systemd' else ''}"
 CORE_IMAGE_BASE_INSTALL += "${@'packagegroup-avocado-qemu' if d.getVar('MACHINE').startswith('qemu') else ''}"
+CORE_IMAGE_BASE_INSTALL += "${CORE_IMAGE_EXTRA_INSTALL}"
 
 IMAGE_FSTYPES += "squashfs"

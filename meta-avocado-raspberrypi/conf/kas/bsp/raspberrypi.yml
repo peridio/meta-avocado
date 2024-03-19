@@ -4,11 +4,12 @@ header:
 repos:
   meta-raspberrypi:
     url: https://git.yoctoproject.org/meta-raspberrypi
-    commit: 9dc6673d41044f1174551120ce63501421dbcd85
-    branch: kirkstone
+    commit: d88e625cf2d12adc3aba03567b7f9f639ba5f129
+    branch: master
     layers:
       .:
 
 local_conf_header:
   raspberrypi: |
     do_image_fwup[depends] += "rpi-bootfiles:do_deploy"
+    LICENSE_FLAGS_ACCEPTED:append = " synaptics-killswitch"
