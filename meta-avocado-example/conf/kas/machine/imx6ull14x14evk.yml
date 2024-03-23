@@ -6,7 +6,7 @@ header:
 
 local_conf_header:
   imx6ull14x14evk: |
-    CORE_IMAGE_BASE_INSTALL += "optee-test"
+    CORE_IMAGE_EXTRA_INSTALL:append  = " optee-test"
     PERIDIO_UBOOT_ENV_OFFSET = "1792"
     PERIDIO_BOOTFS_SIZE_MB = "32"
     PERIDIO_ROOTFS_SIZE_MB = "128"

@@ -6,7 +6,7 @@ header:
 
 local_conf_header:
   qemuarm64: |
-    CORE_IMAGE_BASE_INSTALL += "optee-test"
+    CORE_IMAGE_EXTRA_INSTALL:append  = " optee-test"
     UBOOT_ENV_SIZE = "0x20000"
 
     IMAGE_FSTYPES = "fwup-img"

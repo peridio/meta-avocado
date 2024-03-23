@@ -12,7 +12,6 @@ local_conf_header:
     PERIDIO_ROOTFS_B_PART_DEVPATH = "/dev/mmcblk0p2"
     ROOTFS_A_PART_OFFSET = "77324"
     PERIDIO_DATAFS_TYPE = "ext4"
-    IMAGE_FSTYPES = "fwup-img"
     ENABLE_UART = "1"
     CMDLINE_ROOTFS = "root=/dev/mmcblk0p2 rootwait rootrw=/dev/mmcblk0p4"
 
