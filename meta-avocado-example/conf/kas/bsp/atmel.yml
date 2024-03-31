@@ -1,0 +1,9 @@
+header:
+  version: 11
+  includes:
+    - repo: meta-avocado-atmel
+      file: conf/kas/bsp/atmel.yml
+
+repos:
+  meta-avocado-atmel:
+    path: meta-avocado/meta-avocado-atmel

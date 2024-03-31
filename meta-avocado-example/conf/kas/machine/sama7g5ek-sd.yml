@@ -1,0 +1,12 @@
+header:
+  version: 11
+  includes:
+    - meta-avocado-example/conf/kas/base.yml
+    - meta-avocado-example/conf/kas/bsp/atmel.yml
+    - meta-avocado-example/conf/kas/bsp/arm.yml
+
+local_conf_header:
+  sama7g5ek-sd: |
+    UBOOT_ENV_SIZE = "0x20000"
+
+machine: sama7g5ek-sd

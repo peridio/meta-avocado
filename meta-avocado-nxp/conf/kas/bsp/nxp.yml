@@ -2,16 +2,6 @@ header:
   version: 11
 
 repos:
-  meta-imx:
-    url: https://github.com/peridio/meta-imx
-    commit: ca68ab5d25322b51f54564275c84ab8de3c74ea6
-    branch: scarthgap-6.6.3-1.0.0
-    layers:
-      meta-imx-bsp:
-      meta-imx-sdk:
-      meta-imx-ml:
-      meta-imx-v2x:
-
   meta-freescale:
     url: https://github.com/Freescale/meta-freescale
     commit: da46cb6c07ff25a000840b695627a326b0d4085a
@@ -26,14 +16,8 @@ repos:
     layers:
       .:
 
-  # meta-freescale-distro:
-  #   url: https://github.com/Freescale/meta-freescale-distro
-  #   commit: 3691cb207b610cf505c3a1f8d5d7757814f79967
-  #   branch: master
-  #   layers:
-  #     .:
-
-local_conf_header:
-  meta-avocado-nxp: |
-    PREFERRED_PROVIDER_virtual/bootloader:imx-nxp-bsp = "u-boot-imx"
-    PREFERRED_PROVIDER_virtual/kernel:imx-nxp-bsp = "linux-imx"
+# local_conf_header:
+#   meta-avocado-nxp: |
+#     PREFERRED_PROVIDER_virtual/kernel = "linux-fslc"
+#     PREFERRED_PROVIDER_virtual/bootloader = "u-boot-fslc"
+#     PREFERRED_VERSION_virtual/kernel = "6.1%"

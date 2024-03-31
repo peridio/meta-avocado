@@ -1,8 +1,0 @@
-{
-  "python.autoComplete.extraPaths": [
-    "/src/jschneck/peridio/meta-avocado/sources/poky/bitbake/lib"
-  ],
-  "python.analysis.extraPaths": [
-    "/src/jschneck/peridio/meta-avocado/sources/poky/bitbake/lib"
-  ]
-}

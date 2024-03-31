@@ -1,0 +1,53 @@
+stderr=serial
+stdin=serial
+stdout=serial
+
+loadaddr=0x80200000
+devtype=mmc
+imagefile=fitImage
+filesystem=fat
+
+#
+# Peridio variables
+#
+
+peridio_revert=\
+    if test ${peridio_active} = "a"; then \
+        echo "Reverting to partition B"; \
+        setenv peridio_active "b"; \
+    else \
+        echo "Reverting to partition A"; \
+        setenv peridio_active "a"; \
+    fi
+
+peridio_init=\
+    if test ${peridio_booted} = 1; then \
+        if test ${peridio_validated} = 0; then \
+            run peridio_revert; \
+            setenv peridio_validated 1; \
+            saveenv; \
+        fi; \
+    else \
+        setenv peridio_booted 1; \
+        if test ${peridio_autovalidate} = 1; then \
+            setenv peridio_validated 1; \
+        fi; \
+        saveenv; \
+    fi; \
+    if test ${peridio_active} = "a"; then \
+        setenv bootpart 1:3; \
+        setenv rootpart 1:5; \
+        setenv uenv_root /dev/mmcblk1p5; \
+    else \
+        setenv bootpart 1:4; \
+        setenv rootpart 1:6; \
+        setenv uenv_root /dev/mmcblk1p6; \
+    fi
+
+loadfit=${filesystem}load ${devtype} ${bootpart} ${loadaddr} ${imagefile};
+mmcargs=setenv bootargs console=ttymxc1,115200 root=${uenv_root} rootrw=${peridio_datafs_part_devpath} rootwait
+mmcboot=echo Booting from mmc...;\
+    run mmcargs;\
+    bootm ${loadaddr}#conf-freescale_imx8ulp-evk.dtb
+
+bootcmd=run peridio_init loadfit mmcboot

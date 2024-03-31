@@ -5,11 +5,11 @@ header:
     - meta-avocado-example/conf/kas/bsp/nxp.yml
 
 local_conf_header:
-  imx6ull14x14evk: |
+  imx6solosabresd: |
     CORE_IMAGE_EXTRA_INSTALL:append  = " optee-test"
     
     UBOOT_ENV_SIZE = "0x20000"
-    
+
     PERIDIO_UBOOT_ENV_OFFSET = "1792"
     PERIDIO_BOOTFS_SIZE_MB = "32"
     PERIDIO_ROOTFS_SIZE_MB = "128"
@@ -19,4 +19,9 @@ local_conf_header:
     PERIDIO_DATAFS_PART_TYPE = "ext4"
     PERIDIO_DATAFS_PART_DEVPATH = "/dev/mmcblk0p6"
 
-machine: imx6ull14x14evk
+    KERNEL_CLASSES += "kernel-fitimage"
+    KERNEL_IMAGETYPES = "fitImage"
+
+    DISTRO_FEATURES_EXTRA += "opengl"
+
+machine: imx6solosabresd

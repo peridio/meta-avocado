@@ -1,0 +1,31 @@
+header:
+  version: 11
+  includes:
+    - meta-avocado-example/conf/kas/base.yml
+    - meta-avocado-example/conf/kas/bsp/nxp.yml
+
+local_conf_header:
+  imx8mpevk: |
+    CORE_IMAGE_EXTRA_INSTALL:append = " optee-test"
+    UBOOT_ENV_SIZE = "0x20000"
+    PERIDIO_DISK_DEVPATH = "/dev/mmcblk1"
+    PERIDIO_BOOTFS_A_PART_DEVPATH = "${PERIDIO_DISK_DEVPATH}p3"
+    PERIDIO_BOOTFS_B_PART_DEVPATH = "${PERIDIO_DISK_DEVPATH}p4"
+    PERIDIO_ROOTFS_A_PART_DEVPATH = "${PERIDIO_DISK_DEVPATH}p5"
+    PERIDIO_ROOTFS_B_PART_DEVPATH = "${PERIDIO_DISK_DEVPATH}p6"
+    PERIDIO_DATAFS_PART_DEVPATH = "${PERIDIO_DISK_DEVPATH}p7"
+
+    PERIDIO_BOOTFS_SIZE_MB = "48"
+    PERIDIO_ROOTFS_TYPE = "squashfs"
+    PERIDIO_ROOTFS_A_PART_OFFSET_BLOCKS = "266240"
+    PERIDIO_ROOTFS_SIZE_MB = "320"
+    PERIDIO_UBOOT_ENV_OFFSET = "4096"
+    PERIDIO_BOOTFS_OFFSET_BLOCKS = "5120"
+    FWUP_EXTRA_VARS += "IMX_BOOT_SEEK"
+
+    KERNEL_CLASSES += "kernel-fitimage"
+    KERNEL_IMAGETYPES = "fitImage"
+
+    DISTRO_FEATURES_EXTRA += "opengl wayland"
+
+machine: imx8mpevk

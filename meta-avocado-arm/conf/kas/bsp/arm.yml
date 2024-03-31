@@ -4,7 +4,7 @@ header:
 repos:
   meta-arm:
     url: https://git.yoctoproject.org/meta-arm
-    commit: 74ac722826d020341ffffdf255cfcdd302f22410
+    commit: 8d308aac029f3c5cd08100f2978d0c28bed4332d
     branch: master
     layers:
       meta-arm:
