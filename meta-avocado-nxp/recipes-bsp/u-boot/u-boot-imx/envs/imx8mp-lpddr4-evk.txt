@@ -2,8 +2,11 @@ stderr=serial
 stdin=serial
 stdout=serial
 
+console=ttymxc1,115200
+
 loadaddr=0x80200000
 devtype=mmc
+devnum=1
 imagefile=fitImage
 filesystem=fat
 
@@ -35,19 +38,21 @@ peridio_init=\
         saveenv; \
     fi; \
     if test ${peridio_active} = "a"; then \
-        setenv bootpart 1:3; \
-        setenv rootpart 1:5; \
-        setenv uenv_root /dev/mmcblk1p5; \
+        setenv bootpart ${devnum}:3; \
+        setenv uenv_root ${a.peridio_rootfs_part_devpath}; \
+        setenv uenv_overlayrootrwdev ${a.peridio_datafs_part_devpath}; \
+        setenv uenv_overlayrootrwtype ${a.peridio_datafs_part_type}; \
     else \
-        setenv bootpart 1:4; \
-        setenv rootpart 1:6; \
-        setenv uenv_root /dev/mmcblk1p6; \
+        setenv bootpart ${devnum}:4; \
+        setenv uenv_root ${b.peridio_rootfs_part_devpath}; \
+        setenv uenv_overlayrootrwdev ${b.peridio_datafs_part_devpath}; \
+        setenv uenv_overlayrootrwtype ${b.peridio_datafs_part_type}; \
     fi
 
 loadfit=${filesystem}load ${devtype} ${bootpart} ${loadaddr} ${imagefile};
-mmcargs=setenv bootargs console=ttymxc1,115200 root=${uenv_root} rootrw=${peridio_datafs_part_devpath} rootwait
+mmcargs=setenv bootargs console=${console} root=${uenv_root} overlayrootrwdev=${uenv_overlayrootrwdev} overlayrootrwtype=${uenv_overlayrootrwtype} rootwait
 mmcboot=echo Booting from mmc...;\
     run mmcargs;\
-    bootm ${loadaddr}#conf-freescale_imx8ulp-evk.dtb
+    bootm ${loadaddr}
 
 bootcmd=run peridio_init loadfit mmcboot

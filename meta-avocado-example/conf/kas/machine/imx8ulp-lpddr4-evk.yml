@@ -28,4 +28,5 @@ local_conf_header:
 
     DISTRO_FEATURES_EXTRA += "opengl"
 
-machine: imx8ulpevk
+machine: imx8ulp-lpddr4-evk
+

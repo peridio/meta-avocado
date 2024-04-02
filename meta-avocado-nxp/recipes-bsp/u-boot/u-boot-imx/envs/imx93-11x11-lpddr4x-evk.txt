@@ -48,6 +48,6 @@ loadfit=${filesystem}load ${devtype} ${bootpart} ${loadaddr} ${imagefile};
 mmcargs=setenv bootargs console=ttymxc1,115200 root=${uenv_root} rootrw=${peridio_datafs_part_devpath} rootwait
 mmcboot=echo Booting from mmc...;\
     run mmcargs;\
-    bootm ${loadaddr}#conf-freescale_imx8mp-evk.dtb
+    bootm ${loadaddr}#conf-imx93-11x11-evk.dtb
 
 bootcmd=run peridio_init loadfit mmcboot
