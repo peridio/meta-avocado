@@ -6,4 +6,5 @@ SRC_URI += " \
   file://overlayfs.cfg \
   file://gpt.cfg \
   file://ftpm.cfg \
+  file://wireguard.cfg \
 "

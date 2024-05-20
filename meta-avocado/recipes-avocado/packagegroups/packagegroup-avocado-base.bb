@@ -13,4 +13,5 @@ RDEPENDS:${PN} = " \
   libubootenv-bin \
   peridiod \
   procps \
+  iptables \
 "

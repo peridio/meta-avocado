@@ -7,12 +7,14 @@ header:
 repos:
   meta-peridio:
     url: https://github.com/peridio/meta-peridio
-    commit: 5cdb576fd05fffc1b132119f57297ad96a6ba111
-    branch: main
+    commit: cff28009f682d3c77a519da2c274c30759a99459
+    branch: scarthgap
     layers:
       .:
 
 env:
+  PERIDIO_CERTIFICATE: ""
+  PERIDIO_PRIVATE_KEY: ""
   PERIDIO_CERTIFICATE_FILE: "../ssl/${MACHINE}-certificate.pem"
   PERIDIO_PRIVATE_KEY_FILE: "../ssl/${MACHINE}-private-key.pem"
 

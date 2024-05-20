@@ -10,6 +10,13 @@
     "public_keys": []
   },
   "remote_shell": true,
+  "remote_access_tunnels": {
+    "enabled": true,
+    "service_ports": [
+        22
+    ],
+    "persistent_keepalive": 25
+  },
   "node": {
     "key_pair_source": "uboot-env",
     "key_pair_config": {
