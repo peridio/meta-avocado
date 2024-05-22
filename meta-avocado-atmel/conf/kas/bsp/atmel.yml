@@ -4,7 +4,7 @@ header:
 repos:
   meta-atmel:
     url: https://github.com/linux4sam/meta-atmel
-    commit: f6a69410b77bea22bd300f95f86191db45e3a7ec
-    branch: kirkstone
-    layers: 
+    commit: bb681017a39367e498765a5f2219718a54eb29e0
+    branch: master
+    layers:
       .:

@@ -3,8 +3,8 @@ header:
 
 repos:
   meta-raspberrypi:
-    url: https://git.yoctoproject.org/meta-raspberrypi
-    commit: d88e625cf2d12adc3aba03567b7f9f639ba5f129
+    url: https://github.com/agherzan/meta-raspberrypi
+    commit: 1879cb831f4ea3e532cb5ce9fa0f32be917e8fa3
     branch: master
     layers:
       .:

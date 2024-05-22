@@ -21,8 +21,8 @@ repos:
 
   meta-openembedded:
     url: https://git.openembedded.org/meta-openembedded
-    commit: a8310f7f31acdf273a3f51a75c74cc957375426e
-    branch: master
+    commit: a72010b414ee3d73888ac9cb4e310e8f05e13aea
+    branch: scarthgap
     layers:
       meta-oe:
       meta-perl:
@@ -33,15 +33,15 @@ repos:
 
   openembedded-core:
     url: https://git.openembedded.org/openembedded-core
-    commit: 423f875e10707b583f34dde625301c702c49e9d9
-    branch: master
+    commit: 294a7dbe44f6b7c8d3a1de8c2cc182af37c4f916
+    branch: scarthgap
     layers:
       meta:
 
   meta-virtualization:
-    url: git://git.yoctoproject.org/meta-virtualization
-    commit: 7a3b0b7ae1ac1a721369ee3f7a73b40b73510099
-    branch: master
+    url: https://git.yoctoproject.org/meta-virtualization
+    commit: 1a547c0aa0d75c4143cbb66de6e653d51cdc8bda
+    branch: scarthgap
     layers:
       .:
 

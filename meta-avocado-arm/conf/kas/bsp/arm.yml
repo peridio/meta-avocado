@@ -4,8 +4,8 @@ header:
 repos:
   meta-arm:
     url: https://git.yoctoproject.org/meta-arm
-    commit: 8d308aac029f3c5cd08100f2978d0c28bed4332d
-    branch: master
+    commit: 9781813a88fd93ed2d76011401fe83fa8a28c73c
+    branch: scarthgap
     layers:
       meta-arm:
       meta-arm-toolchain:
