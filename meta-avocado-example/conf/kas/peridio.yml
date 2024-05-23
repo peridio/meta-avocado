@@ -7,8 +7,8 @@ header:
 repos:
   meta-peridio:
     url: https://github.com/peridio/meta-peridio
-    commit: cff28009f682d3c77a519da2c274c30759a99459
-    branch: scarthgap
+    commit: 060e3c1bf29a752ed8285d3f11191b3e06aacf84
+    branch: main
     layers:
       .:
 
