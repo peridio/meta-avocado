@@ -1,0 +1,42 @@
+# Wrap QEmu ARM64 Secureboot in a container image
+FROM alpine:3.20
+
+ARG QEMU_IMAGE
+ARG QEMU_BIOS
+
+ENV QEMU_IMAGE=${QEMU_IMAGE}
+ENV QEMU_BIOS=${QEMU_BIOS}
+ENV QEMU_SMP=1
+ENV QEMU_MEM=1024
+ENV PERIDIO_PRIVATE_KEY=""
+ENV PERIDIO_CERTIFICATE=""
+
+RUN apk add --no-cache qemu-system-aarch64 u-boot-tools
+RUN mkdir -p /opt/avocado
+
+WORKDIR /opt/avocado
+
+COPY ${QEMU_IMAGE} .
+COPY ${QEMU_BIOS} .
+COPY fw_env.config /etc/fw_env.config
+RUN sed -i "s|/dev/mmcblk0|/opt/avocado/${QEMU_IMAGE}|g" /etc/fw_env.config
+RUN echo $'#!/bin/sh\nfw_setenv peridio_certificate "$PERIDIO_CERTIFICATE"\nfw_setenv peridio_key "$PERIDIO_PRIVATE_KEY"\nexec "$@"' >> entrypoint.sh
+
+RUN chmod +x /opt/avocado/entrypoint.sh
+ENTRYPOINT ["/opt/avocado/entrypoint.sh"]
+
+CMD ["/bin/sh", "-c", "qemu-system-aarch64 \
+  -M virt,secure=on,highmem=off \
+  -bios ${QEMU_BIOS} \
+  -cpu cortex-a53 \
+  -device sdhci-pci \
+  -device sd-card,drive=mmc \
+  -device virtio-net-device,netdev=eth0 \
+  -device virtio-rng-device,rng=rng0 \
+  -drive file=${QEMU_IMAGE},if=none,format=raw,id=mmc \
+  -m ${QEMU_MEM} \
+  -netdev user,id=eth0 \
+  -nographic \
+  -object rng-random,filename=/dev/urandom,id=rng0 \
+  -rtc base=utc,clock=host \
+  -smp ${QEMU_SMP}"]
