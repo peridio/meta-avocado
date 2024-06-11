@@ -7,7 +7,7 @@ header:
 repos:
   meta-peridio:
     url: https://github.com/peridio/meta-peridio
-    commit: db6fcf40a2a013f76b72c578b4e7f666f8a0fd3a
+    commit: 941a076f6f631247cf6ff662626dfd788dd1dd4e
     branch: main
     layers:
       .:
