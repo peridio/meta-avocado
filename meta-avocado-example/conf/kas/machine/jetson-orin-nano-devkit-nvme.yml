@@ -6,9 +6,10 @@ header:
 
 local_conf_header:
   jetson-orin-nano-devkit-nvme: |
-    PARTITION_LAYOUT_EXTERNAL = "avocado_flash_l4t_nvme_rootfs_ab.xml"
+    # PARTITION_LAYOUT_EXTERNAL = "avocado_flash_l4t_nvme_rootfs_ab.xml"
     KERNEL_ARGS = "mminit_loglevel=4 console=ttyTCU0,115200 firmware_class.path=/etc/firmware fbcon=map:0 net.ifnames=0 nospectre_bhb rootrw=/dev/nvme0n1p3"
-    ROOTFSPART_SIZE_DEFAULT = "8589934592"
+    USE_REDUNDANT_FLASH_LAYOUT = "1"
+    ROOTFSPART_SIZE_DEFAULT = "${@int(8589934592*2)}"
     PERIDIO_UBOOT_ENV_OFFSET = "1024"
     PERIDIO_DISK_DEVPATH = "/dev/nvme0n1"
     PERIDIO_ROOTFS_A_PART_DEVPATH = "${PERIDIO_DISK_DEVPATH}p1"

@@ -4,14 +4,14 @@ header:
 repos:
   meta-freescale:
     url: https://github.com/Freescale/meta-freescale
-    commit: da46cb6c07ff25a000840b695627a326b0d4085a
-    branch: master
+    commit: c4ef717d621ce0b1f3ff077eb91cb2cc44e02329
+    branch: scarthgap
     layers:
       .:
 
   meta-freescale-3rdparty:
     url: https://github.com/Freescale/meta-freescale-3rdparty
-    commit: ae392bf4c9b9499234cb4a3411624a4177237af2
-    branch: master
+    commit: 6c063450d464eb2f380443c7d9af1b94ce9b9d75
+    branch: scarthgap
     layers:
       .:

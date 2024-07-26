@@ -4,8 +4,8 @@ header:
 repos:
   meta-raspberrypi:
     url: https://github.com/agherzan/meta-raspberrypi
-    commit: 1879cb831f4ea3e532cb5ce9fa0f32be917e8fa3
-    branch: master
+    commit: 1918a27419dcd5e79954c0dc0edddcde91057a7e
+    branch: scarthgap
     layers:
       .:
 

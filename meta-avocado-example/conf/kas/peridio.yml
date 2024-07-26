@@ -7,8 +7,8 @@ header:
 repos:
   meta-peridio:
     url: https://github.com/peridio/meta-peridio
-    commit: 941a076f6f631247cf6ff662626dfd788dd1dd4e
-    branch: main
+    commit: 5017497cd459d70c5849c48e4ace787497897649
+    branch: peridiod-v3.0.0-rc.0
     layers:
       .:
 
@@ -20,5 +20,7 @@ env:
 
 local_conf_header:
   peridio: |
-    PREFERRED_VERSION_erlang ?= "26%"
-    PREFERRED_VERSION_erlang-native ?= "26%"
+    PREFERRED_VERSION_erlang ?= "27%"
+    PREFERRED_VERSION_erlang-native ?= "27%"
+    PREFERRED_VERSION_elixir ?= "1.17%"
+    PREFERRED_VERSION_elixir-native ?= "1.17%"

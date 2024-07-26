@@ -4,20 +4,19 @@ header:
 repos:
   meta-tegra:
     url: https://github.com/oe4t/meta-tegra
-    commit: 929d03d4a4c619b0a6b44cfd023423d13f229cd8
-    branch: master
+    commit: caf164e4917dc56d59990c72f9d8284abb6621f5
+    branch: scarthgap
     layers:
       .:
   meta-tegra-community:
-    url: htps://github.com/oe4t/meta-tegra-community
-    commit: a3e430e24d464b3684364bff82c20d56b6f085f2
-    branch: master
+    url: https://github.com/oe4t/meta-tegra-community
+    commit: 6e9998fb6f4c53d52309746aeec3f7ffafbba494
+    branch: scarthgap
     layers:
       .:
 
 local_conf_header:
   tegra: |
-    UBOOT_EXTLINUX = "1"
     USE_REDUNDANT_FLASH_LAYOUT_DEFAULT = "1"
     INITRAMFS_IMAGE_BUNDLE = "1"
     FWUP_EXTRA_VARS = "TEGRAFLASH_HOST_PATH INITRAMFS_IMAGE"
@@ -25,5 +24,4 @@ local_conf_header:
     TEGRA_INITRD_FLASH_INITRAMFS_FSTYPES = "cpio.gz.cboot"
     CORE_IMAGE_EXTRA_INSTALL:append = " packagegroup-avocado-tegra"
     DISTRO_FEATURES_EXTRA += "opengl seccomp"
-    CUDA_GCCVERSION = "8.%"
     LICENSE_FLAGS_ACCEPTED:append = " commercial_faad2 commercial_x264"

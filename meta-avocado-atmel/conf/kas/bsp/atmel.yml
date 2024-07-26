@@ -4,7 +4,7 @@ header:
 repos:
   meta-atmel:
     url: https://github.com/linux4sam/meta-atmel
-    commit: bb681017a39367e498765a5f2219718a54eb29e0
-    branch: master
+    commit: 8e6b116714916798329e9ea221ffbcef8b2f0abb
+    branch: scarthgap
     layers:
       .:
