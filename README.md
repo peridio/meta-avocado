@@ -19,7 +19,7 @@ machine.
 ```bash
 mkdir build-qemuarm64-secureboot
 cd build-qemuarm64-secureboot
-git clone git@github.com/peridio/meta-avocado
+git clone git@github.com:peridio/meta-avocado
 ```
 
 ## Build
