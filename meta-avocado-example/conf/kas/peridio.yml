@@ -4,18 +4,11 @@ header:
     - repo: meta-peridio
       file: conf/kas/peridio-include.yml
 
+
 repos:
-
-  meta-erlang:
-    url: https://github.com/meta-erlang/meta-erlang
-    commit: 174c38f58208ee54fd0d27b21872b8ae3146075d
-    branch: kirkstone
-    layers:
-      .:
-
   meta-peridio:
     url: https://github.com/peridio/meta-peridio
-    commit: 3113abe54a50b670abf6d664e06741f93312d8cf
+    commit: 57dacb267eeebf74624074d710e9166dd3b8107b
     branch: kirkstone
     layers:
       .:
